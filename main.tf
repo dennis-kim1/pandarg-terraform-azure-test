@@ -21,7 +21,6 @@ resource "azurerm_windows_web_app" "res-0" {
   public_network_access_enabled            = true
   resource_group_name                      = "rg-prg-terraform-dev-wus-01"
   service_plan_id                          = "/subscriptions/3153ba4d-e56a-4976-8039-d9b3145cb822/resourceGroups/rg-prg-tipmanagement-dev-wus-01/providers/Microsoft.Web/serverFarms/asp-prg-tipmanagement-dev-wus-01"
-  site_credential                          = [] # Masked sensitive attribute
   tags = {
     "Created By"                                     = "Bernardo Kummerfeldt"
     Environment                                      = "Development"
@@ -35,7 +34,6 @@ resource "azurerm_windows_web_app" "res-0" {
     container_registry_use_managed_identity       = false
     default_documents                             = ["Default.htm", "Default.html", "Default.asp", "index.htm", "index.html", "iisstart.htm", "default.aspx", "index.php", "hostingstart.html"]
     ftps_state                                    = "FtpsOnly"
-    health_check_eviction_time_in_min             = 0
     http2_enabled                                 = false
     load_balancing_mode                           = "LeastRequests"
     local_mysql_enabled                           = false
@@ -50,13 +48,11 @@ resource "azurerm_windows_web_app" "res-0" {
     worker_count                                  = 1
     application_stack {
       dotnet_version               = "v9.0"
-      java_embedded_server_enabled = false
       php_version                  = "Off"
       python                       = false
     }
   }
   sticky_settings {
     app_setting_names       = ["ASPNETCORE_ENVIRONMENT", "SendGridApiKey"]
-    connection_string_names = []
   }
 }
