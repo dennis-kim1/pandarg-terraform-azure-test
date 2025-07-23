@@ -8,6 +8,8 @@ terraform {
 }
 provider "azurerm" {
   features {}
+
+  subscription_id = "3153ba4d-e56a-4976-8039-d9b3145cb822"
 }
 resource "azurerm_windows_web_app" "res-0" {
   app_settings                             = {}
